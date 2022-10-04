@@ -11,7 +11,7 @@
 
         <!-- Si es invitado  -->
         @guest 
-            @include('partials.learning.singnup_customer')
+            @include('partials.learning.signup_customer')
         @else
             <h2 class="welcome text-center">
                 {{ __("¿Qué te apetece ver hoy :user?", ['user' => auth()->user()->name ])}}
