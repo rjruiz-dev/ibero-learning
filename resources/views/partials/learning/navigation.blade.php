@@ -15,7 +15,8 @@
                 <!-- Si es invitado  -->
                 @guest 
                     <!-- Ventana Modal -->
-                    <a href="#" class="site-btn header-btn">{{ __("Acceder") }}</a>
+                    <a href="#" id="login-button" class="site-btn header-btn">{{ __("Acceder") }}</a>
+                    @include('partials.learning.modals.login')
                 @else
                     <!-- Enlace de logout para cerra sesion -->
                     <a href="{{ route('logout') }}"
@@ -45,3 +46,20 @@
     </div>
 </header>
 <!-- Header section end -->
+
+@push("js")
+    <script>
+        // si existe la sesion error-login (falla la validacion o credencialies incorrectas)
+        @if(session('error-login'))
+            // mostramos la modal 
+            $("#login-modal").modal();
+        @endif
+        // sino click a boton Acceder (login-button)
+        jQuery("#login-button").on("click", function (e){
+            e.preventDefault();
+            // abrimos la ventana modal
+            $("#login-modal").modal();
+        })
+    </script>
+
+@endpush

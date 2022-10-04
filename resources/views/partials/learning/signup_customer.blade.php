@@ -1,4 +1,8 @@
-@include('partials.form_errors')
+<!-- Si no existe la sesion login  -->
+@if(!session('error-login'))
+    <!-- Mostramos los errores de validacion del formulario de registro -->
+    @include('partials.form_errors')
+@endif
 
 <form class="intro-newslatter text-center" action="{{ route('register' ) }}" method="POST">
     @csrf <!-- envia token para que laravel valide si es correcta  -->
